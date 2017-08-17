@@ -1,0 +1,214 @@
+{
+	"media": [
+		{
+			"title": "Raiders of the Lost Ark",
+			"year": "1981",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BMjA0ODEzMTc1Nl5BMl5BanBnXkFtZTcwODM2MjAxNA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+			"genre": ["action", "adventure"],
+			"type": "movie"
+		},
+		{
+			"title": "The Other Guys",
+			"year": "2010",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BMTc0NDQzNTA2Ml5BMl5BanBnXkFtZTcwNzI2OTQzMw@@._V1_.jpg",
+			"genre": ["action", "comedy", "crime"],
+			"type": "movie"
+		},
+		{
+			"title": "Jurassic Park",
+			"year": "1993",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_.jpg",
+			"genre": ["adventure", "sci-fi", "thriller"],
+			"type": "movie"
+		},
+		{
+			"title": "Star Wars: A New Hope",
+			"year": "1977",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BOTIyMDY2NGQtOGJjNi00OTk4LWFhMDgtYmE3M2NiYzM0YTVmXkEyXkFqcGdeQXVyNTU1NTcwOTk@._V1_SY1000_CR0,0,654,1000_AL_.jpg",
+			"genre": ["action", "adventure", "fantasy"],
+			"type": "movie"
+		},
+		{
+			"title": "Predator",
+			"year": "1987",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BMTI2ODMzODA0Ml5BMl5BanBnXkFtZTYwNTM3NzY5._V1._CR17,27,308,447_.jpg",
+			"genre": ["action", "adventure", "sci-fi"],
+			"type": "movie"
+		},
+		{
+			"title": "Blazing Saddles",
+			"year": "1974",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BMTcyMzQ0MjQ5MF5BMl5BanBnXkFtZTYwOTczNjA5._V1_.jpg",
+			"genre": ["comedy", "western"],
+			"type": "movie"
+		},
+		{
+			"title": "Chinatown",
+			"year": "1974",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BN2YyNDE5NzItMjAwNC00MGQxLTllNjktZGIzMWFkZjA3OWQ0XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SY1000_CR0,0,699,1000_AL_.jpg",
+			"genre": ["drama", "mystery", "thriller"],
+			"type": "movie"
+		},
+		{
+			"title": "Beverly Hills Cop",
+			"year": "1984",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BNzMyMjQ2OTEwOF5BMl5BanBnXkFtZTgwNzc2OTkwMDE@._V1_.jpg",
+			"genre": ["action", "comedy", "crime"],
+			"type": "movie"
+		},
+		{
+			"title": "The Invitation",
+			"year": "2015",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BMTkzODMwNDkzOF5BMl5BanBnXkFtZTgwNDA4NzA1ODE@._V1_SY1000_CR0,0,687,1000_AL_.jpg",
+			"genre": ["horror", "thriller"],
+			"type": "movie"
+		},
+		{
+			"title": "The Exorcist",
+			"year": "1973",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BYzczOGRlMzQtNDAzMS00MjdlLTk5Y2QtNTM3MDE3NjRkYzQwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
+			"genre": ["horror"],
+			"type": "movie"
+		},
+		{
+			"title": "From Russia With Love",
+			"year": "1963",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BMTQxNTIzMTExN15BMl5BanBnXkFtZTcwODI4MDgzNA@@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+			"genre": ["action", "adventure", "thriller"],
+			"type": "movie"
+		},
+		{
+			"title": "Lion King",
+			"year": "1994",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BMjEyMzgwNTUzMl5BMl5BanBnXkFtZTcwNTMxMzM3Ng@@._V1_SY1000_CR0,0,772,1000_AL_.jpg",
+			"genre": ["animation", "adventure", "drama"],
+			"type": "movie"
+		},
+		{
+			"title": "Terminator 2: Judgment Day",
+			"year": "1991",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BMTI4MDAwMDY3N15BMl5BanBnXkFtZTcwODIwMzMzMQ@@._V1._CR46,1,342,473_.jpg",
+			"genre": ["action", "sci-fi"],
+			"type": "movie"
+		},
+		{
+			"title": "Robocop",
+			"year": "1987",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BMTk1MDUzMTQ3OV5BMl5BanBnXkFtZTcwMDAwNTk0NA@@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+			"genre": ["action", "crime", "sci-fi"],
+			"type": "movie"
+		},
+		{
+			"title": "Finding Nemo",
+			"year": "2003",
+			"poster": "http://ia.media-imdb.com/images/M/MV5BMTY1MTg1NDAxOV5BMl5BanBnXkFtZTcwMjg1MDI5Nw@@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
+			"genre": ["animation", "adventure", "comedy"],
+			"type": "movie"
+		},
+		{
+			"title": "The Girl with the Dragon Tattoo",
+			"year": "2005",
+			"poster": "http://d.gr-assets.com/books/1327868566l/2429135.jpg",
+			"genre": ["crime", "mystery", "thriller"],
+			"type": "book"
+		},
+		{
+			"title": "Roadside Picnic",
+			"year": "1971",
+			"poster": "https://i.kinja-img.com/gawker-media/image/upload/s---ohdLyWR--/17m13vh1sfoq3jpg.jpg",
+			"genre": ["sci-fi", "fantasy"],
+			"type": "book"
+		},
+		{
+			"title": "City of Thieves",
+			"year": "2008",
+			"poster": "https://d.gr-assets.com/books/1392015757l/1971304.jpg",
+			"genre": ["adventure", "history", "war"],
+			"type": "book"
+		},
+		{
+			"title": "I Am Pilgrim",
+			"year": "2013",
+			"poster": "https://d.gr-assets.com/books/1403345411l/18144124.jpg",
+			"genre": ["mystery", "thriller", "war"],
+			"type": "book"
+		},
+		{
+			"title": "The Da Vinci Code",
+			"year": "2003",
+			"poster": "https://d.gr-assets.com/books/1303252999l/968.jpg",
+			"genre": ["adventure", "crime", "mystery"],
+			"type": "book"
+		},
+		{
+			"title": "A Short History of Nearly Everything",
+			"year": "2003",
+			"poster": "https://d.gr-assets.com/books/1433086293l/21.jpg",
+			"genre": ["comedy", "history", "science"],
+			"type": "book"
+		},
+		{
+			"title": "Kitchen Confidential",
+			"year": "2000",
+			"poster": "https://d.gr-assets.com/books/1433739086l/33313.jpg",
+			"genre": ["biography", "food & drink", "memoir"],
+			"type": "book"
+		},
+		{
+			"title": "King Leopold's Ghost",
+			"year": "1998",
+			"poster": "https://d.gr-assets.com/books/1348621563l/347610.jpg",
+			"genre": ["biography", "history", "politics"],
+			"type": "book"
+		},
+		{
+			"title": "Salt Book",
+			"year": "2002",
+			"poster": "https://d.gr-assets.com/books/1414608893l/2715.jpg",
+			"genre": ["food & drink", "history", "science"],
+			"type": "book"
+		},
+		{
+			"title": "The Revenant",
+			"year": "2002",
+			"poster": "https://d.gr-assets.com/books/1409498796l/22836957.jpg",
+			"genre": ["history", "thriller", "western"],
+			"type": "book"
+		},
+		{
+			"title": "A Game of Thrones",
+			"year": "1996",
+			"poster": "https://d.gr-assets.com/books/1436732693l/13496.jpg",
+			"genre": ["adventure", "dragons", "fantasy"],
+			"type": "book"
+		},
+		{
+			"title": "The Time Machine",
+			"year": "1895",
+			"poster": "https://d.gr-assets.com/books/1327942880l/2493.jpg",
+			"genre": ["adventure", "classics", "sci-fi"],
+			"type": "book"
+		},
+		{
+			"title": "20,000 Leagues Under the Sea",
+			"year": "1870",
+			"poster": "https://d.gr-assets.com/books/1345271681l/33507.jpg",
+			"genre": ["adventure", "classics", "sci-fi"],
+			"type": "book"
+		},
+		{
+			"title": "The Adventures of Sherlock Holmes",
+			"year": "1892",
+			"poster": "https://d.gr-assets.com/books/1164045516l/3590.jpg",
+			"genre": ["classics", "detective", "mystery"],
+			"type": "book"
+		},
+		{
+			"title": "No Country For Old Men",
+			"year": "2005",
+			"poster": "https://d.gr-assets.com/books/1443231179l/12497.jpg",
+			"genre": ["mystery", "thriller", "western"],
+			"type": "book"
+		}
+	]
+}
