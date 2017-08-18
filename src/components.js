@@ -30,10 +30,13 @@ const {
 
 
 /**
- * UIs are composed of lists of vertical and horizontal components
+ * UIs are usually composed of lists of vertically and horizontally styled elements
  *
- * Each component is wrapped to be a Higher Order Component (HOC) composer
- * const Div = (...fns) => compose(...fns)('div');
+ * In this demo, each element is a plain string (e.g., 'div') wrapped to be a
+ * Higher Order Component (HOC) composer:
+ * const Div = (...HOCs) => compose(...HOCs)('div');
+ *
+ * All elements get their attributes, styles, behaviors, data, and everything else from HOCs.
  *
  * withItems is a HOC that provides a consise, declarative syntax to transform inputs like text,
  * components, and data into list items.
