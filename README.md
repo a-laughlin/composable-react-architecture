@@ -1,16 +1,33 @@
 # UI Hyper-Composability Demo
 
-Companion to blog post at [link tbd](http://a-laughlin.com/hyper-composable-react-architecture).
+## Goal
+Prototype some ideas for a hyper-composable, hyper-decoupled UI architecture.  The result thus far is the most productive and fun architecture I've ever worked with.  Little to no boilerplate. Very few bugs thus far.  For details, see companion [blog post](http://www.a-laughlin.com/hyper-composable-react-architecture).  Screencast tbd.
 
+## Basic concept:
+Works on the idea that all UIs are composed of horizontal and vertical elements.
+
+1. Start with zero-dependency-graph string elements. `'div'`.
+2. Wrap them in compose. `const Div = (...fns)=>compose(...fns)('div');`
+3. Add React Higher Order Components
+  - children via `withItems`
+  - styles via `withStyles` and `withItemContextStyles`
+  - events via `pipeClicks`, `pipeChanges`, etc.
+  - withReduxData for redux data
+  - withGQLData for GraphQL data
+4. Sprinkle some lodash/fp
+5. That's it!
+
+More details on HOCs and usage in `components.js` comments.
 
 ## Installing & Running.
 **Install** `npm i`;
 **Run** `npm start`;
 
+## Dependencies
+Includes GraphQL, React, Redux, and a few others.  See `package.json`.
+
 Built on [create-react-app](https://github.com/facebookincubator/create-react-app).
 
-Basic concept.  Prototype a hyper-composable, hyper-decoupled architecture that's been rattling around in my head for a bit.  The result thus far is the fastest and most fun UI architecture I've ever prototyped in.  Little to no boilerplate also.  For details, see the blog post.
-Includes GraphQL, React, Redux.
 
 
 
