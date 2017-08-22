@@ -13,12 +13,12 @@ UIs are usually composed of lists of vertically and horizontally styled elements
 1. Start with string elements. `'div'`.
 2. Wrap them in compose. `const Div = (...HOCs)=>compose(...HOCs)('div');`
 3. Add React Higher Order Components for attributes, styles, behaviors, data, and everything else
-  - children via `withItems`
-  - styles via `withStyles` and `withItemContextStyles`
-  - events via `pipeClicks`, `pipeChanges`, etc.
-  - withReduxData for redux data
-  - withGQLData for GraphQL data
-4. Sprinkle some lodash/fp
+  - Children via `withItems`
+  - Styles via `withStyles` and `withItemContextStyles`
+  - Events via `pipeClicks`, `pipeChanges`, etc.
+  - Redux data via `withReduxData`
+  - GraphQL data via `withGQLData`
+4. Sprinkle some lodash/fp and recompose
 5. That's it!
 
 More details on HOCs and usage in `components.js` comments.
