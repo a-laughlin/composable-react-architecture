@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars */ // because exploratory prototype
 import {withProps,mapProps,defaultProps} from 'recompose';
 import React from 'react'; // for examples with jsx, though jsx is unnecessary with per-node HOC composers
 import {
@@ -30,33 +30,30 @@ const {
 
 
 /**
- * UIs are usually composed of lists of vertically and horizontally styled elements
- *
- * In this demo, each element is a plain string (e.g., 'div') wrapped to be a
- * Higher Order Component (HOC) composer:
- * const Div = (...HOCs) => compose(...HOCs)('div');
- *
- * All elements get their attributes, styles, behaviors, data, and everything else from HOCs.
- *
  * withItems is a HOC that provides a consise, declarative syntax to transform inputs like text,
  * components, and data into list items.
  *
+ * Div(withItems('Some Text')) -> <div><span></div></div>
+ *
  * Notes:
- * - Any of its behaviors are easy to override via withItemsHOCFactory()
+ * - It is synchronous.
  * - It works well with Ramda and lodash/fp functions (the examples use lodash/fp extensively)
  * - It encourages exportable components and a flat html structure.
  * - All nodes are presentational.  There are no wasted nodes (thus Flexbox always works).
- * - Flexbox always works.
- * - It is synchronous.
+ * - All text nodes are wrapped in spans for flexbox.
+ * - Discourages passing props more than one deep.
+ *
  * Basic operation:
  * - Non-functions are queued
  * - Consecutive functions are reduced and their output queued
  * - The queue gets run through createElement, flattened, then added to props.children.
  * - It sounds weird, but is a lot faster to work with than manual JSX.
+ *
  * Arguments to piped functions: (last, flattenedProps)
- *  - flattenedProps flattens data props, resulting in {...props,...props.data-a,...props.data-b}
- *  - flattenedProps decouples piped fns from the implementation of data-providng HOCs like
- *    react-redux connect(), and graphql(), and some utility functions
+ * - May change when I get around to standardizing the various pipes
+ * - flattenedProps flattens data props, resulting in {...props,...props.data-a,...props.data-b}
+ * - flattenedProps decouples piped fns from the implementation of data-providng HOCs like
+ *   react-redux connect(), and graphql(), and some utility functions
  *
  * Simple examples below.  withItems is used in more complex ways throughout the demo
  */
@@ -93,15 +90,18 @@ export const ItemsContent = Div( withItems([Items1, Items2, Items3, Items4]) );
 /**
  * Styles
  *
- * withStyles is a HOC for all the styles needed to display a component.
+ * withStyles
+ * A HOC for all the styles needed to display a component.
  * It intentionally does not support positional/sizing styles like width, height, margin,
  * flex, alignSelf, flexGrow, flexShrink.  Those go in the parent list's withItemContextStyles,
  * so they will apply to the item only when in that list.
- * Another way to think about it is with React components:
- * - Components can set their own default props and alter childrens' props.
- * - Lists      can set their own default styles and alter items' styles.
  *
- * withItemContextStyles is where all the styles go that only make sense in the current context.
+ * Another way to think about it is with React components:
+ * - Components... can set their own default props and alter childrens' props.
+ * - Lists...      can set their own default styles and alter items' styles.
+ *
+ * withItemContextStyles
+ * A HOC that applies context-specific styles to children
  * Usually those are the same positional styles that withStyles doesn't support.
  * The benefit is super reusable components that render anywhere at any size.
  * The tradeoff is time designing ... components that render anywhere, at any size.
@@ -129,9 +129,9 @@ export const StylesContent = Div(
  *
  * Styles are rarely where bugs originate, so it's useful to not have to see them when debugging.
  * We can minimize their visual footprint through shorthands.
+ *
  * WithStyles returns a new hoc when you pass it styles objects, so you can call
  * the HOC as a function to pass it new styles.
- *
  */
 
 const v = withStyles(lVertical);
@@ -195,13 +195,17 @@ export const ReduxDataContent = Div(withItems([ ReduxDataLabel, ReduxDataDiv ]),
 
 /**
  * Event Handler Pipes
- * pipe any event to any destination other than the element's own props
+ * create an event handler pipe with handlerPipeHOCFactory({on:'Click'})
+ * transform and send the event to any destination by passing functions
+ * e.g., toRedux() is basically a redux store dispatch() wrapper
  * destinations are limited only by the function passed in.  toRedux, toGraphql, toApi, wherever...
  *
- * Each pipe
- * arguments received are pipe-ish with an extra arg (last, sources), where:
- * last is the last piped output
- * sources is {...props,event};
+ * piped functions receive arguments similar to withItems, but get an 'event' prop
+ * fn(last, {...props,event});
+ *
+ * The action of toRedux is simple.  Here's the actual code currently.
+ * const toRedux = (type='')=>payload=>{DISPATCH({type,payload});return payload;};
+ * const rootReducer = (state,{type,payload})=>(type==='' ? {...state,...payload} : {...state,[type]:payload})
  */
 export const EventPipeHeading = Div(withItems(`Event Handler Pipes`), headingStyles);
 
@@ -306,7 +310,14 @@ export const MovieFilterFilterForm = Div(
 );
 
 /* Film Grid */
-// used in FilmGrid below
+const FilmSummaryBox = Li( // not exporting since it requires specific props
+  defaultProps({title:'default title', year:'default year'}),
+  // want a text creation w/ variables w/o function creation... less code noise...
+  // maybe lodash template with {} or ${}... withItems('{title} ({year})')
+  withItems(({title,year})=>`${title} (${year})`),
+  vi(mt0p5,mb0p5,w100pct),
+  v(t0p8),
+);
 function filterFilms ({films,filmYearsSelected,filmGenresSelected,filmMediaSelected,filmQuery}){
   return filter(conforms({
     year:y => len0(filmYearsSelected) || !len0(intersection(ensureArray(y),filmYearsSelected)),
@@ -315,13 +326,6 @@ function filterFilms ({films,filmYearsSelected,filmGenresSelected,filmMediaSelec
     title:t => !filmQuery || t.toLowerCase().includes(filmQuery.toLowerCase()),
   }))(films)
 }
-// want a better shortcut for text creation with variables than creating a function
-const FilmSummaryBox = Li(
-  withItems(({title,year})=>`${title} (${year})`),
-  vi(mt0p5,mb0p5,w100pct),
-  v(t0p8),
-);
-
 export const FilmGrid = Div(
   withGQLData(gql`query {films {title,year,genre,type,poster}}`,{}),
   withReduxData(pick(['filmYearsSelected','filmGenresSelected','filmMediaSelected','filmQuery'])),

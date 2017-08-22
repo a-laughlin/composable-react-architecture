@@ -1,6 +1,11 @@
-// This file contains a bunch of one-liners and other utils made for composability experiments
-// As exploratory code, there are no tests, and little documentation.
-// Feel free to ping me in the issues with questions.
+/*
+ This file contains a bunch of one-liners and other utils made for composability experiments
+ As exploratory code, there are no tests, and little documentation.
+ Feel free to ping me in the issues with questions.
+ Error handling.  I haven't standardized error handling in the various pipes yet.
+ The `pipeAsync` function thus far handles it the best, by normalizing sync and async functions,
+ and letting downstream functions decide how to handle errors.
+*/
 
 /* eslint-disable no-unused-vars */
 import React,{cloneElement,createElement,Children,createFactory} from 'react';
