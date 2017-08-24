@@ -15,11 +15,11 @@ import {connect} from 'react-redux';
 import {
   pipe, over, identity, isString, isPlainObject, isFunction, isNull,isUndefined,stubTrue,get, pick,map,
   transform as transformFP,flatten,find,mapValues,forOwn as forOwnFP,noop,flattenDeep,flatMap,mapKeys,
-  partition,compose,compact,reduce,cloneDeep,without,capitalize,once,isError as isJSError,cond
+  partition,compose,compact,reduce,cloneDeep,without,capitalize,once,isError as isJSError,cond,spread
 } from 'lodash/fp';
 import {set,merge,wrap} from 'lodash';
 
-const [forOwn,transform] = [forOwnFP,transformFP].map(fn=>fn.convert({cap:false}));
+export const [forOwn,transform] = [forOwnFP,transformFP].map(fn=>fn.convert({cap:false}));
 
 /**
  * HTML Node names as HOC composers e.g., Div(...HOCs)
@@ -37,7 +37,6 @@ export const [Div,Span,Ul,Ol,Dt,Dd,Dl,Article,P,H1,H2,H3,H4,H5,H6,Li,Input,A,Lab
              'div,span,ul,ol,dt,dd,dl,article,p,h1,h2,h3,h4,h5,h6,li,input,a,label,pre'
              .split(',').map(toHOCComposer));
 export const TextInput = toHOCComposer(withProps({type:'text'})('input'));
-
 
 export const is = val1=>val2=>val1===val2;
 export const {isArray} = Array;
@@ -58,7 +57,7 @@ export const pipeEach = (...fns)=>(last,...args)=>{
 };
 
 
-
+export const slice = (start=0,end)=>arr=>arr.slice(start,end);
 export const transformToObj = fn=>obj=>transform(fn,{})(obj);
 
 // groupByArray is lodash groupBy for arrays of values instead of single values
@@ -93,6 +92,7 @@ export const groupByArray = key => collection =>{
 //   )){return false;}
 //   return true;
 // }
+
 export const from = (str)=>(last,srcs)=>get(str)(srcs);
 const valMapper = cond([
   [isFunction,identity],
@@ -204,6 +204,7 @@ export const condNoExec = (arrays)=> (...args)=>(find(arr=>arr[0](...args))(arra
 export const converge = ifElse(isPlainObject,invokeObjectWithArgs,over);
 
 export const sort = a => a.sort();
+export const reverse = a => a.reverse();
 export const partitionObject = (...tests)=>(target)=>{
   const defaultCase = {...target};
   return tests.map(test=>{
@@ -214,7 +215,44 @@ export const partitionObject = (...tests)=>(target)=>{
     },{})(defaultCase);
   }).concat([defaultCase]);
 }
+export const partialBlankObj = fn => (...vals) => fn({},...vals);
+export const mergeToBlank = partialBlankObj(Object.assign);
+export const mergeArrayToBlank = spread(mergeToBlank);
 
+export const joinFactory = (joinFn)=>(getters=[])=>(collections=[])=>{
+  const arg = {}; // shared arguments object to save memory;
+  const maap = map.convert({cap:false});
+  const gettersArray = (Array.isArray(getters) ? getters : [getters]);
+  let lastGetter;
+  let result;
+  collections.forEach((collection,c)=>{
+    const currentKeyGetter = (gettersArray[c] || lastGetter);
+    lastGetter = isFunction(currentKeyGetter) ? currentKeyGetter : o=>o[currentKeyGetter];
+    maap((item,key)=>{
+      arg.getter = lastGetter;
+      arg.itemVal = lastGetter(item);
+      arg.item = item;
+      arg.getters = getters;
+      arg.collection = collection;
+      arg.collectionKey = c;
+      result = joinFn(result, arg);
+    })(collection);
+  });
+  return result;
+}
+export const assignAllBy = joinFactory((result={},{item,itemVal})=>{
+  Object.assign(result[itemVal]||(result[itemVal]={}),item);
+  return result;
+});
+export const groupAllByArray = joinFactory((result={},{item,itemVal})=>{
+  return transform((acc,arrVal)=>{
+    (acc[arrVal]||(acc[arrVal]=[])).push(item);
+  },result)(itemVal);
+});
+export const groupAllBy = joinFactory((result={},{item,itemVal})=>{
+  (result[itemVal]||(result[itemVal]=[])).push(item);
+  return result;
+});
 
 export const toggleArrayVal = (arr, val)=>arr.includes(val) ? without([val],arr) : [...arr,val];
 export const toggleIn = dataKey=>(val,srcs)=>toggleArrayVal(get(dataKey)(srcs),val);
