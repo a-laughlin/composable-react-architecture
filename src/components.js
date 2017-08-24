@@ -311,7 +311,6 @@ export const MovieFilterFilterForm = Div(
 
 /* Film Grid */
 const FilmSummaryBox = Li( // not exporting since it requires specific props
-  defaultProps({title:'default title', year:'default year'}),
   // want a text creation w/ variables w/o function creation... less code noise...
   // maybe lodash template with {} or ${}... withItems('{title} ({year})')
   withItems(({title,year})=>`${title} (${year})`),
