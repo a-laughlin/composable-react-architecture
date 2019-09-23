@@ -10,8 +10,8 @@ Note: This repo is from 2016/17.  While the basic concepts and syntax apply, cha
   - Events via `pipeClicks`, `pipeChanges`, etc.
   - Redux data via `withReduxData`
   - GraphQL data via `withGQLData`
-4. Sprinkle some lodash/fp and recompose   
-5. That's it!  
+2. Sprinkle lodash/fp and recompose   
+3. That's it!  
 
 More details on HOCs and usage in [`src/components.js`](https://github.com/a-laughlin/composable-react-architecture/blob/master/src/components.js) comments.
 
