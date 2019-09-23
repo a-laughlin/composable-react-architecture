@@ -1,18 +1,11 @@
-# UI Hyper-Composability Demo
+# Composable React Architecture
 
-## Goal
-Prototype a hyper-composable, hyper-decoupled UI architecture.  The result thus far is the most productive and fun architecture I've ever worked with.  For background, see the companion [blog post](http://www.a-laughlin.com/hyper-composable-react-architecture).
+## Concept:
+Improve composability by reducing dependency graphs.
 
-Screencast tbd.  Let me know if you think it would be useful.
-
-## Basic concept:
-Improve composability by eliminating unnecessary dependency graphs, and flattening necessary ones.
-
-UIs are usually composed of lists of vertically and horizontally styled elements.
-
-1. Start with string elements. `'div'`.
+1. Start with string elements `'div'`. (for small test surface. Also works with non-string components).
 2. Wrap them in compose. `const Div = (...HOCs)=>compose(...HOCs)('div');`
-3. Add React Higher Order Components for attributes, styles, behaviors, data, and everything else
+3. Compose with React HOCs (Higher order Components) for everything else
   - Children via `withItems`
   - Styles via `withStyles` and `withItemContextStyles`
   - Events via `pipeClicks`, `pipeChanges`, etc.
