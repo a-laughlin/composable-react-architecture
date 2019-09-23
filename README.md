@@ -1,18 +1,17 @@
 # Composable React Architecture
 
-## Concept:
 Improve composability by reducing dependency graphs.
 
-1. Start with string elements `'div'`. (for small test surface. Also works with non-string components).
-2. Wrap them in compose. `const Div = (...HOCs)=>compose(...HOCs)('div');`
-3. Compose with React HOCs (Higher order Components) for everything else
+1. Start with string elements `'div'`. (for small test surface. Also works with non-string components).  
+2. Wrap them in compose. `const Div = (...HOCs)=>compose(...HOCs)('div');`  
+3. Compose with React HOCs (Higher order Components) for everything else  
   - Children via `withItems`
   - Styles via `withStyles` and `withItemContextStyles`
   - Events via `pipeClicks`, `pipeChanges`, etc.
   - Redux data via `withReduxData`
   - GraphQL data via `withGQLData`
-4. Sprinkle some lodash/fp and recompose
-5. That's it!
+4. Sprinkle some lodash/fp and recompose   
+5. That's it!  
 
 More details on HOCs and usage in `components.js` comments.
 
