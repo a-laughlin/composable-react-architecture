@@ -1,11 +1,10 @@
 # Composable React Architecture
 
-Improve composability by reducing dependency graphs.
-Note: This repo is from 2016/17.  While the basic concepts and syntax apply, new developments in React and other libraries enable much simpler and cleaner implementations.  I also improved style composition in later projects.
+Improve composability by reducing dependency graphs.  
+  
+Note: This repo is from 2016/17.  While the basic concepts and syntax apply, changes in React (e.g., hooks) and other libraries enable simpler and cleaner implementations.  I also rewrote style composition to be more consise, performant, and unit tested in later projects.
 
-1. Start with string elements. e.g., `'div'`. (for small test surface. Also works with non-string components).  
-2. Wrap them in a compose function. `const Div = (...HOCs)=>compose(...HOCs)('div');`  
-1. Compose with React HOCs (Higher order Components) for everything else  
+1. React HOCs (Higher order Components) for everything
   - Children via `withItems`
   - Styles via `withStyles` and `withItemContextStyles`
   - Events via `pipeClicks`, `pipeChanges`, etc.
